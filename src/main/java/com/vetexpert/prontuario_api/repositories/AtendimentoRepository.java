@@ -1,9 +1,9 @@
 package com.vetexpert.prontuario_api.repositories;
 
+import com.vetexpert.prontuario_api.model.Atendimento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.vetexpert.prontuario_api.model.Tutor;
 
 @Repository
-public interface TutorRepository extends JpaRepository<Tutor, Long> {
+public interface AtendimentoRepository extends JpaRepository<Atendimento,Long> {
 }
