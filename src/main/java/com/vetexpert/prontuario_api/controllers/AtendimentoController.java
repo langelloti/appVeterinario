@@ -25,7 +25,8 @@ public class AtendimentoController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void atualizar(@PathVariable Long id, @RequestBody Atendimento dados){
-        dados.setId(dados.getId());
+        dados.setId(id);
+        repository.save(dados);
     }
 
     @DeleteMapping("/{id}")
