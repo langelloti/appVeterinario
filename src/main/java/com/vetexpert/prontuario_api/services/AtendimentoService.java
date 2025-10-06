@@ -1,33 +1,33 @@
 package com.vetexpert.prontuario_api.services;
 
+import com.vetexpert.prontuario_api.model.Atendimento;
 
-import com.vetexpert.prontuario_api.model.Veterinario;
-import com.vetexpert.prontuario_api.repositories.VeterinarioRepository;
+import com.vetexpert.prontuario_api.repositories.AtendimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class VeterinarioService {
+public class AtendimentoService {
 
     @Autowired
-    private VeterinarioRepository repository;
+    private AtendimentoRepository repository;
 
-    public Veterinario save(Veterinario dados) {
+    public Atendimento save(Atendimento dados){
         return repository.save(dados);
     }
 
-    public List<Veterinario> findAll() {
+    public List<Atendimento> findAll(){
         return repository.findAll();
     }
 
-    public Veterinario update(Long id, Veterinario dados) {
+    public Atendimento update(Long id, Atendimento dados){
         dados.setId(id);
         return repository.save(dados);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id){
         repository.deleteById(id);
     }
 }

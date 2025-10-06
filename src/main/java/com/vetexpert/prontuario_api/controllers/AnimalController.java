@@ -1,8 +1,6 @@
-
 package com.vetexpert.prontuario_api.controllers;
-
 import com.vetexpert.prontuario_api.model.Animal;
-import com.vetexpert.prontuario_api.repositories.AnimalRepository;
+import com.vetexpert.prontuario_api.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,30 +12,29 @@ import java.util.List;
 public class AnimalController {
 
     @Autowired
-    private AnimalRepository repository;
+    private AnimalService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void cadastrar(@RequestBody Animal dados) {
-        repository.save(dados);
+    public Animal save(@RequestBody Animal dados) {
+       return service.save(dados);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void atualizar(@PathVariable Long id, @RequestBody Animal dados) {
-        dados.setId(id);
-        repository.save(dados);
+    public Animal update(@PathVariable Long id, @RequestBody Animal dados) {
+       return service.update(id, dados);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Animal> listar() {
-        return repository.findAll();
+    public List<Animal> findAll() {
+        return service.findAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deleteById(id);
     }
 }

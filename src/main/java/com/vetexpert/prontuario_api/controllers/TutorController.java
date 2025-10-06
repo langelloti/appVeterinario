@@ -31,13 +31,13 @@ public class TutorController {
 
     @PutMapping("/{id}")// esse método tendo o "/{id}" adiciona no final do caminho http o direcionamento, garantindo que o PUT seja aplicado apenas ao tutor de id correspondente
     @ResponseStatus(HttpStatus.OK)
-    public Tutor add(@PathVariable Long id, @RequestBody Tutor dados){//o path variable identifica qual tutor será atualizado e o request body fornece os novos dados para atualização
-        return service.add(id, dados);
+    public Tutor update(@PathVariable Long id, @RequestBody Tutor dados){//o path variable identifica qual tutor será atualizado e o request body fornece os novos dados para atualização
+        return service.update(id, dados);
     }
 
     @DeleteMapping("/{id}")// mesma ideia do id de put mapping, mas dessa vez garantindo o método DELETE ao usuário de id correspondente
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){//como não há uma atualização e sim uma exclusão, ele apenas exclui tudo que encontra no id
+    public void deleteById(@PathVariable Long id){//como não há uma atualização e sim uma exclusão, ele apenas exclui tudo que encontra no id
        service.deleteById(id); //aplica o método delete ao id correspondente com a camada service
     }
 }

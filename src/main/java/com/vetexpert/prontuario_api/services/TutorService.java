@@ -24,7 +24,7 @@ public class TutorService {
         return repository.findAll();
     }
 
-    public Tutor add(Long id, Tutor dados){
+    public Tutor update(Long id, Tutor dados){
         dados.setId(id);
         return repository.save(dados);
     }
