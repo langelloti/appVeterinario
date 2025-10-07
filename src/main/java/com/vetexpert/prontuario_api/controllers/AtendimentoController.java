@@ -16,8 +16,8 @@ public class AtendimentoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Atendimento cadastrar(@RequestBody Atendimento dados){
-        return service.save(dados);
+    public Atendimento create(@RequestBody Atendimento dados){
+        return service.create(dados);
     }
 
     @PutMapping("/{id}")

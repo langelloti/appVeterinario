@@ -14,7 +14,7 @@ public class AtendimentoService {
     @Autowired
     private AtendimentoRepository repository;
 
-    public Atendimento save(Atendimento dados){
+    public Atendimento create(Atendimento dados){
         return repository.save(dados);
     }
 

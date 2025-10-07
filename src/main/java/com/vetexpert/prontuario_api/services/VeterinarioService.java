@@ -1,6 +1,4 @@
 package com.vetexpert.prontuario_api.services;
-
-
 import com.vetexpert.prontuario_api.model.Veterinario;
 import com.vetexpert.prontuario_api.repositories.VeterinarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ public class VeterinarioService {
     @Autowired
     private VeterinarioRepository repository;
 
-    public Veterinario save(Veterinario dados) {
+    public Veterinario create(Veterinario dados) {
         return repository.save(dados);
     }
 

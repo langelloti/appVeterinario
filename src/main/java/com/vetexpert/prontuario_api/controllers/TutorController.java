@@ -18,15 +18,15 @@ public class TutorController {
 
     @PostMapping//faz com que as requisições POST caiam nesse método
     @ResponseStatus(HttpStatus.CREATED)
-    public Tutor save(@RequestBody Tutor dados){
-        return service.save(dados);
+    public Tutor create(@RequestBody Tutor dados){
+        return service.create(dados);
     }//requestbody traduz o JSON da requisição e organiza o objeto conforme os setters
     //agora tudo nesse controller irá delegar funções para a camada de serviços
 
     @GetMapping//faz com que as requisições GET caiam nesse método
     @ResponseStatus(HttpStatus.OK)
-    public List<Tutor> findById(){
-        return service.findById();//delega a busca para a camada service
+    public List<Tutor> findAll(){
+        return service.findAll();//delega a busca para a camada service
     }
 
     @PutMapping("/{id}")// esse método tendo o "/{id}" adiciona no final do caminho http o direcionamento, garantindo que o PUT seja aplicado apenas ao tutor de id correspondente

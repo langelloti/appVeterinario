@@ -1,5 +1,4 @@
 package com.vetexpert.prontuario_api.controllers;
-
 import com.vetexpert.prontuario_api.model.Veterinario;
 import com.vetexpert.prontuario_api.services.VeterinarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,8 @@ public class VeterinarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Veterinario save(@RequestBody Veterinario dados){
-        return service.save(dados);
+    public Veterinario create(@RequestBody Veterinario dados){
+        return service.create(dados);
     }
 
     @GetMapping

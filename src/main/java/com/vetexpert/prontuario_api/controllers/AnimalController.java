@@ -1,9 +1,11 @@
 package com.vetexpert.prontuario_api.controllers;
+import com.vetexpert.prontuario_api.dto.DadosCadastroAnimal;
 import com.vetexpert.prontuario_api.model.Animal;
 import com.vetexpert.prontuario_api.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -11,13 +13,16 @@ import java.util.List;
 @RequestMapping("/api/animais")
 public class AnimalController {
 
-    @Autowired
     private AnimalService service;
+
+    public AnimalController(AnimalService service) {
+        this.service = service;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Animal save(@RequestBody Animal dados) {
-       return service.save(dados);
+    public Animal create(@RequestBody DadosCadastroAnimal dados) {
+       return service.create(dados);
     }
 
     @PutMapping("/{id}")

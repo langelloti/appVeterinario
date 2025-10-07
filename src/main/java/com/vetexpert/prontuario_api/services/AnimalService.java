@@ -1,20 +1,35 @@
 package com.vetexpert.prontuario_api.services;
-
+import com.vetexpert.prontuario_api.dto.DadosCadastroAnimal;
 import com.vetexpert.prontuario_api.model.Animal;
 import com.vetexpert.prontuario_api.repositories.AnimalRepository;
+import com.vetexpert.prontuario_api.repositories.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class AnimalService {
 
-    @Autowired
-    private AnimalRepository repository;
 
-    public Animal save(Animal dados){
-        return repository.save(dados);
+    private AnimalRepository repository;
+    private TutorRepository tutorRepository;
+
+    public AnimalService(AnimalRepository repository, TutorRepository tutorRepository) {
+        this.repository = repository;
+        this.tutorRepository = tutorRepository;
+    }
+
+    public Animal create(DadosCadastroAnimal dados){
+        var tutor = tutorRepository.findById(dados.tutorId()).orElseThrow(() -> new RuntimeException("Tutor não encontrado!"));
+
+        var animal = new Animal();
+        animal.setNome(dados.nome());
+        animal.setRaca(dados.raca());
+        animal.setPeso(dados.peso());
+        animal.setIdade(dados.idade());
+        animal.setTutor(tutor);
+
+        return repository.save(animal);
     }
 
     public List<Animal> findAll(){

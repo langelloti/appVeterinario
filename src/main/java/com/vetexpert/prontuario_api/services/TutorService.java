@@ -1,6 +1,4 @@
 package com.vetexpert.prontuario_api.services;
-
-
 import com.vetexpert.prontuario_api.model.Tutor;
 import com.vetexpert.prontuario_api.repositories.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +12,13 @@ public class TutorService {
     @Autowired //Agora quem injeta o repository são os services
     private TutorRepository repository;
 
-    public Tutor save(Tutor dados){
+    public Tutor create(Tutor dados){
         //movemos toda a lógica do negócio para services visando futuras manutenções envolvendo
         //regras de negócios
         return repository.save(dados);
     }
 
-    public List<Tutor> findById(){
+    public List<Tutor> findAll(){
         return repository.findAll();
     }
 
